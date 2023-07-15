@@ -1,16 +1,16 @@
+{% extends 'news/default.html' %}
 
-{% extends 'mb_project/templates/default.html' %}
 {% load static %}
-{% block MyCss %}
 
+{% block MyCss %}
+<title> {{ news.title }}</title>
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 <script
-        src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-        crossorigin="anonymous"></script>
-
+  src="https://code.jquery.com/jquery-3.6.4.js"
+  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 {% endblock %}
 
@@ -21,35 +21,52 @@
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
           <span class="icon-bar">Меню</span>
         </button>
-        <a class="navbar-brand" href="#">SkillFactory</i></a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">SkillFactory News</a>
       </div>
       <div class="collapse" id="collapseMenu" >
         <ul class="nav navbar-nav navbar-right">
           <li><a href="https://apps.skillfactory.ru/" target="_blank">Учебная Платформа</a></li>
           <li><a href="http://127.0.0.1:8000/authors/">Авторы</a></li>
           <li><a href="http://127.0.0.1:8000/">На Глаvную</a></li>
-          <li><a href="http://127.0.0.1:8000/search/">ПОИСК</a></li>
+          <li><a href="http://127.0.0.1:8000/search">ПОИСК</a></li>
         </ul>
       </div>
     </div>
 </div>
+</div>
 
-<!-- templates/home.html -->
-<h1>Message board homepage</h1>
-<ul>
-    {% for post in all_posts_list %}
-        <li>{{ post.text }}</li>
-    {% endfor %}
-</ul>
 
-{%if page_obj.has_previous %} {# whether the previous page exists #}
-    <a href="?page={{page_obj.previous_page_number}}"><</a> {# link to the prev page #}
-{% endif %}
-<span>{{page_obj.number}}</span> {# the current page number #}
-{%if page_obj.has_next %} {# whether the next page exists #}
-    <a href="?page={{page_obj.next_page_number}}">></a> {# link to the next page #}
-{% endif %}
+  <div class="container wb">
+    <div class="row centered">
+      <br><br>
+      <div class="col-lg-6">
+        <h4>Публикация № {{ ps.pk }}</h4>
+          <ul>
+              <li align="left">Категория поста:&nbsp;&nbsp;&nbsp;&nbsp;{{ ps.categoryType }}</li>
+              <li align="left">Автор поста:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ ps.author }}</li>
+              <li align="left">Рейтинг поста:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ ps.rating }}</li>
+          </ul>
+        <p><br><br></p>
+      </div>
+      <div class="col-lg-6">
+        <h4>Заголовок поста</h4>
+          <ul>
+              <h6>{{ ps.title }}</h6>
+
+          </ul>
+        <p><br><br></p>
+      </div>
+
+      <div class="col-lg-2"></div>
+      <h3>Содержание публикации</h3>
+      <div class="col-lg-10 col-lg-offset-1" >
+        <p>{{ ps.text }}</p>
+      </div>
+    </div>
+  </div>
+<br><br>
 <hr />
+  <hr />
   <div id="lg">
     <div class="container">
       <div class="row centered">
