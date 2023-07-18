@@ -18,11 +18,9 @@
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
-          <span class="icon-bar"><h2>Меню</h2></span>
-         </button>
-        <a class="navbar-brand" href="#">ArnestDiabloGameClub</a>
-        <a class="navbar-brand" href="#">{{user}}</a>
-        <a href="http://127.0.0.1:8000/logout" class="navbar-brand" href="#">Выход</a>
+          <span class="icon-bar">Меню</span>
+        </button>
+        <a class="navbar-brand" href="#">SkillFactory</i></a>
       </div>
       <div class="collapse" id="collapseMenu" >
         <ul class="nav navbar-nav navbar-right">
@@ -36,12 +34,25 @@
     </div>
 </div>
 
-<p><center><h1>Новости сервера</h1></center></p>
-<ul><h4>
-    {% for post in all_posts_list %}
-        <li>{{ post.text }}</li>
-    {% endfor %}
-</h4></ul>
+{% block content %}
+<center><h5> Войти в систему </h5>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="Войти">
+</form>
+<button> <a href="/signup"> Регистрация </a></button></center>
+{% endblock %}
 
 <hr />
   <div id="lg">
@@ -67,9 +78,12 @@
   <div id="f">
     <div class="container">
       <div class="row centered">
-          <a href="https://vk.com/dark_elf_arnest"><h6><i class="fa fa-vk"></i></h6></a>
-          <a href="https://apps.skillfactory.ru/" ><h6>©</a>
+          <a href="https://vk.com/dark_elf_arnest"><i class="fa fa-vk"></i>Создатель</a>
+          <a href="https://apps.skillfactory.ru/" ><i class="&reg;"></i></a>
+
+      </div>
     </div>
   </div>
 
 {% endblock %}
+
