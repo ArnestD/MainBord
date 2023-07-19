@@ -2,11 +2,14 @@
 
 {% block content %}
 
-<p><center><h1>Новости сервера</h1></center></p>
-<ul><h4>
+<p><center> <h1>Новости сервера</h1> </center></p>\
+
+<ul>
+    <h4>
     {% for post in all_posts_list %}
         <li>{{ post.text }}</li>
     {% endfor %}
-</h4></ul>
+    </h4>
+</ul>
 
 {% endblock %}

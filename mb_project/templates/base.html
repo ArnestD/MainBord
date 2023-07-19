@@ -16,24 +16,34 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
-          <span class="icon-bar"><h2>Меню</h2></span>
-         </button>
-        <a class="navbar-brand" href="#">ArnestDiabloGameClub</a>
-        <a class="navbar-brand" href="#">{{user}}</a>
-        <a href="http://127.0.0.1:8000/logout" class="navbar-brand" href="#">Выход</a>
+        <table >
+          <tr><center>
+            <a href="http://127.0.0.1:8000/" class="navbar-brand" href="#">ArnestDiabloGameClub</a>
+          </center></tr>
+          <tr>
+            <td>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
+                <span class="icon-bar"><h6>Меню</h6></span>
+              </button>
+            </td>
+            <td><a class="navbar-brand" href="#">{{user}}</a></td>
+            <td><a href="http://127.0.0.1:8000/logout" class="navbar-brand" href="#">Выход</a></td>
+          </tr>
+        </table>
       </div>
       <div class="collapse" id="collapseMenu" >
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="http://127.0.0.1:8000/">На Главную</a></li>
-          <li><a href="http://127.0.0.1:8000/login">Войти</a></li>
+          <li><a href="http://127.0.0.1:8000/login" >Войти</a></li>
           <li><a href="http://127.0.0.1:8000/signup">Зарегестрироватся</a></li>
           <li><a href="http://127.0.0.1:8000/authors/">Авторы</a></li>
-          <li><a href="http://127.0.0.1:8000/search/">ПОИСК</a></li>
+          <li><a href="http://127.0.0.1:8000/search/">Поиск</a></li>
         </ul>
       </div>
     </div>
 </div>
+<center><a href="http://127.0.0.1:8000/post_new/" class="top-menu">
+  <span class="glyphicon glyphicon-plus"></span>Разместить новость
+</center></a>
 
 {% block content %}
 

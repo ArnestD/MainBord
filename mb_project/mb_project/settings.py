@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts.apps.PostsConfig',
 
+
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FROM_EMAIL = 'al.muzykant@yandex.ru'
+SERVER_EMAIL = 'al.muzykant@yandex.ru'
+
+
 
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/'
@@ -142,14 +146,14 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'al.muzykant@yandex.ru'
+EMAIL_HOST_PASSWORD = '123456'
 EMAIL_USE_SSL = True
 
 ADMINS = [
     ('Admin', 'al.muzykant@yandex.ru'),]
 
-SERVER_EMAIL = 'al.muzykant@yandex.ru'
 

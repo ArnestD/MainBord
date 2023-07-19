@@ -8,7 +8,6 @@ class Post(models.Model):
     def __str__(self):
         return self.text[:50]
 
-
 class BaseRegisterForm(UserCreationForm):
     email = forms.EmailField(label = "Email")
     first_name = forms.CharField(label = "Имя")
@@ -22,20 +21,3 @@ class BaseRegisterForm(UserCreationForm):
                   "email",
                   "password1",
                   "password2", )
-
-class Coment(models.Model):
-    text = models.TextField()
-    def __str__(self):
-        return self.text[:100]
-
-
-
-
-
-
-
-
-
-
-# Create your models here.
-
