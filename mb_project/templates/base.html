@@ -1,0 +1,71 @@
+{% load static %}
+{% block MyCss %}
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<script
+        src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block MyContent %}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseMenu">
+          <span class="icon-bar"><h2>Меню</h2></span>
+         </button>
+        <a class="navbar-brand" href="#">ArnestDiabloGameClub</a>
+        <a class="navbar-brand" href="#">{{user}}</a>
+        <a href="http://127.0.0.1:8000/logout" class="navbar-brand" href="#">Выход</a>
+      </div>
+      <div class="collapse" id="collapseMenu" >
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://127.0.0.1:8000/">На Главную</a></li>
+          <li><a href="http://127.0.0.1:8000/login">Войти</a></li>
+          <li><a href="http://127.0.0.1:8000/signup">Зарегестрироватся</a></li>
+          <li><a href="http://127.0.0.1:8000/authors/">Авторы</a></li>
+          <li><a href="http://127.0.0.1:8000/search/">ПОИСК</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+{% block content %}
+
+{% endblock %}
+
+<hr />
+  <div id="lg">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-2 col-lg-offset-1">
+          <img src=" {% static 'img/101.jpg' %}" alt= " width="500" height="400" ">
+        </div>
+      </div>
+    </div>
+  </div>
+    <br><br>
+  <div id="r">
+    <div class="container">
+      <div class="row centered">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h4></h4>
+          <p> ArnestD © 2023</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="f">
+    <div class="container">
+      <div class="row centered">
+          <a href="https://vk.com/dark_elf_arnest"><h6><i class="fa fa-vk"></i></h6></a>
+          <a href="https://apps.skillfactory.ru/" ><h6>©</a>
+    </div>
+  </div>
+
+{% endblock %}
