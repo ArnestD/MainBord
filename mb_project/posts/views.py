@@ -7,6 +7,7 @@ from .models import BaseRegisterForm
 from .forms import PostForm
 from django.shortcuts import redirect
 from render import render
+from django.urls import reverse
 
 class HomePageView(ListView):
     model = Post
@@ -23,29 +24,40 @@ class BaseRegisterView(CreateView):
     form_class = BaseRegisterForm
     success_url = '/signup/sing.html'
 
-def post_new(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'post_edit.html', {'form': form})
+class PostNewView(CreateView):
+    model = Post
+    form_class = PostForm
+    def PostNewView(request):
+        if request.method == "POST":
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return redirect('post_detail.html', pk=post.pk)
+        else:
+            form = PostForm()
+        return render(request, 'post_edit.html', {'form': form})
 
-def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'post_edit.html', {'form': form})
+    def get_success_url(self):
+        return reverse('home')
+
+class PostEditView(CreateView):
+    model = Post
+    form_class = PostForm
+    def PostEditView(request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        if request.method == "POST":
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return redirect('post_detail.html', pk=post.pk)
+        else:
+            form = PostForm(instance=post)
+        return render(request, 'post_edit.html', {'form': form})
+
+    def get_success_url(self):
+        return reverse('home')
+

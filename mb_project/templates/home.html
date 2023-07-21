@@ -3,7 +3,9 @@
 {% block content %}
 
 <p><center> <h1>Новости сервера</h1> </center></p>\
-
+<center><a href="http://127.0.0.1:8000/new/" class="top-menu">
+  <span class="glyphicon glyphicon-plus"></span>Разместить новость
+</center></a>
 <ul>
     <h4>
     {% for post in all_posts_list %}

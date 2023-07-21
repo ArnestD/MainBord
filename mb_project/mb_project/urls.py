@@ -22,5 +22,7 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('sing/', include('posts.urls')),
     path('loginout/', include('posts.urls')),
-    path('post_new/', include('posts.urls')),
+    path('new/', include('posts.urls')),
+    path('post/<int:pk>/', include('posts.urls')),
+
 ]
