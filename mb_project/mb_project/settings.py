@@ -156,4 +156,7 @@ EMAIL_USE_SSL = True
 ADMINS = [
     ('Admin', 'al.muzykant@yandex.ru'),]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 

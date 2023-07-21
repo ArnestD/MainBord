@@ -4,6 +4,14 @@
     <center> <h1>New post</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <!-- myfile1 - переменная передающееся в Django -->
+            <input type="file" name="myfile1">
+            <button type="submit">Загрузка</button>
+        </form>
+
+<p>Ссылка: <a href="{{ file_url }}">{{ file_url }}</a></p>
         <button type="submit" class="save btn btn-default">Save</button>
     </form></center>
 {% endblock %}

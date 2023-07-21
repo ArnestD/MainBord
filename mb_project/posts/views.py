@@ -1,5 +1,5 @@
 from django.views.generic import ListView, CreateView
-from .models import Post
+from .models import Post, Media
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
@@ -61,3 +61,17 @@ class PostEditView(CreateView):
     def get_success_url(self):
         return reverse('home')
 
+def media(request):
+    data = Media.objects.all()
+    return render(request, 'home.html', {'data': data})
+
+def media_save(request):
+    if request.method == 'POST' and request.FILES:
+        file = request.FILES['myfile1']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        file_url = fs.url(filename)
+        return render(request, 'home.html', {
+            'file_url': file_url
+        })
+    return render(request, 'home.html')
